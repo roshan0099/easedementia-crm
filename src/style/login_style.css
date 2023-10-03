@@ -1,0 +1,43 @@
+.center-container {
+    display: flex;
+flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the container to full viewport height */
+}
+
+
+.btn-display{
+
+    /* display: flex; */
+    /* flex-direction: row; */
+    
+    
+}
+
+.login-button{
+    margin : 20px;
+}
+
+.warning{
+    display: none;
+}
+
+@media (max-width: 530px) {
+
+.content{
+    display: none;
+}
+
+button{
+    display: none;
+}
+header{
+    display:none;
+}
+.warning{
+    display: block;
+}
+
+
+}

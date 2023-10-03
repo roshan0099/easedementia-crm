@@ -1,0 +1,111 @@
+body{
+    height: 100%;
+    /* background-color: rgb(119, 19, 119); */
+  }
+  
+  .violet-color{
+    background-color: rgb(77, 5, 77);
+  }
+  
+  .white-bg{
+    background-color: white;
+  }
+  
+  .info{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  td{
+    margin: 10px;
+  }
+  th,td,tr{
+    /* border: 1px solid black; */
+  }
+  
+  table{
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  .table-cell{
+    /* border: 1px solid black; */
+    border-spacing: 30px;
+    /* margin: 20px; */
+  }
+  
+  tr{
+    /* margin: 20px; */
+  }
+  
+  .head{
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  /* .table-tr{
+    height: 30px;
+  } */
+  
+  .center-item{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  
+  .custom-table {
+    border-spacing: 10px; /* Adjust the cell spacing as needed */
+    border-collapse: separate;
+    width: 100%;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    height: 50px;
+    /* border: 1px solid #000; Add border styles as needed */
+    /* padding: 10px; Add padding as needed */
+  }
+  
+  textarea {
+    width: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+  }
+  
+  .secondPage{
+    margin-top: 20px;
+  }
+  
+  .pagebreak {
+    page-break-before: always;
+  }
+  
+  .deets{
+    margin-top: 50px;
+    padding-left: 39px;
+    
+  }
+  
+  .infos{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .fields{
+    width: 300px;
+  }
+  
+  .info-space{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    /* background: transparent; */
+  }
+  
+  textarea{
+    padding: 15px;
+    border-radius: 14px;
+  }
