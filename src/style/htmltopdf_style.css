@@ -35,7 +35,7 @@ body{
   table{
     border-collapse: separate;
     border-spacing: 0;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
   .table-cell{
     /* border: 1px solid black; */
