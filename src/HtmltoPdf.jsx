@@ -120,7 +120,7 @@ export default function InvoicePdf() {
                         <div className="table-info">
 
                             <div className="container mt-5">
-                                <div className="table-responsive">
+                                <div className="">
                                 <table className="table custom-table container">
                                     <thead>
                                         <tr>
