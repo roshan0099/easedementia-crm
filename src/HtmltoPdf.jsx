@@ -3,8 +3,11 @@ import "./style/htmltopdf_style.css";
 import html2pdf from 'html2pdf.js';
 import logo from './img/logo-nobg.png';
 import { useRef,useState } from 'react';
+import supabase from './authLogin';
+import {useNavigate} from 'react-router-dom';
 
 export default function InvoicePdf() {
+    const navigate = useNavigate()
     const pdfRef = useRef(null);
 
     const handleConvertToPDF = () => {
@@ -45,6 +48,13 @@ export default function InvoicePdf() {
         }
     };
 
+    async function signOut() {
+        const { error } = await supabase.auth.signOut()
+        
+        navigate("/")
+        // setProfile(null)
+
+    }
 
     return (
         <div className="App">
@@ -58,15 +68,15 @@ export default function InvoicePdf() {
                         {/* <!-- Logout option on the far right --> */}
                         <ul className="navbar-nav ml-auto pointer">
                             <li className="nav-item">
-                                <a className="nav-link">Logout</a>
+                                <a className="nav-link" onClick={signOut}>Logout</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </header>
-            <div className="container mt-4">
+            <div className="container mt-4 display-none">
 
-                <button onClick={handleConvertToPDF}>Convert to PDF</button>
+                <button className="btn" onClick={handleConvertToPDF}>Convert to PDF</button>
             </div>
             <div className="content" ref={pdfRef}>
                 {/* Add your HTML content to be converted to PDF here */}
@@ -110,6 +120,7 @@ export default function InvoicePdf() {
                         <div className="table-info">
 
                             <div className="container mt-5">
+                                <div className="table-responsive">
                                 <table className="table custom-table container">
                                     <thead>
                                         <tr>
@@ -182,6 +193,8 @@ export default function InvoicePdf() {
 
                                     </tbody>
                                 </table>
+
+                                </div>
                             </div>
 
 

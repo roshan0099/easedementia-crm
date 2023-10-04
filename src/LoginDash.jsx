@@ -1,5 +1,5 @@
 
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams } from 'react-router-dom';
 import { createClient } from "@supabase/supabase-js";
 import { useState, useEffect } from 'react';
 import supabase from './authLogin';
@@ -7,13 +7,13 @@ import "./style/loginDash_style.css"
 
 export default function DashBoard() {
 
-
+    const navigate = useNavigate()
     const [profile, setProfile] = useState(null)
     const [formdeets, setFormdeets] = useState({
         email: '', pwd: ''
     })
     const { id } = useParams();
-    console.log("this.context : ====?", id)
+    // console.log("this.context : ====?", id)
 
     async function signIn() {
 
@@ -22,9 +22,12 @@ export default function DashBoard() {
         const { data, error } = await supabase.auth.signInWithPassword({
             email: formdeets["email"],
             password: formdeets["pwd"],
+
+            // email : "xyz@abc.com",
+            // password : "000000",
         })
 
-        //   console.log(data, error)
+        //   console.log("this is : ",data, error)
 
     }
     useEffect(() => {
@@ -41,11 +44,16 @@ export default function DashBoard() {
         const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
 
             if (event == "SIGNED_IN"){
-                console.log("yoooooo youre in")
+                if(id === "3"){
+                    // console.log("this is 3")
+                    navigate("/dailylog")
+                    
+                }
+                // console.log("yoooooo youre in")
 
             }
             else{
-                console.log("get out")
+                // console.log("get out")
 
             }
         })
@@ -56,7 +64,7 @@ export default function DashBoard() {
     function deetsUpdating(e) {
 
         setFormdeets((prev) => {
-            console.log("prev value : ", prev)
+            // console.log("prev value : ", prev)
 
             return {
                 ...prev, [e.target.name]: e.target.value,
@@ -108,9 +116,9 @@ export default function DashBoard() {
 
     return (
         <>
-            {/* {console.log("checking ...  ",profile)} */}
+            {/* {console.log("checking ...  ",profile)}
 
-            {/* <button type='button' onClick={signIn}>click to login</button>
+            <button type='button' onClick={signIn}>click to login</button>
             <button type='button'onClick={signOut}>SignOut</button>
             <div>this is dashboar</div> */}
 
@@ -120,17 +128,17 @@ export default function DashBoard() {
                         <div class="col-md-6 mx-auto">
                             <div class="login-container">
                                 <h2 class="text-center mb-4">Login</h2>
-                                <form >
+                                {/* <form > */}
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email:</label>
                                         <input type="email" class="form-control no-outline" id="email" placeholder="Enter your email" onChange={deetsUpdating} name='email' required />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Password:</label>
+                                        <label for="password" class="form-label">Password:</label>
                                         <input type="password" class="form-control no-outline" id="pwd" placeholder="Enter your password"  onChange={deetsUpdating} name='pwd' required />
                                     </div>
-                                    <button type="submit" class="button-background-move">Login</button>
-                                </form>
+                                    <button type="submit" class="button-background-move" onClick={signIn}>Login</button>
+                                {/* </form> */}
                             </div>
                         </div>
                     </div>

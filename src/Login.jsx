@@ -1,5 +1,6 @@
 
-import "./style/login_style.css"
+// import "./style/login_style.css"
+import "./style/loginPage_style.css"
 import logo from "./img/logo-nobg.png"
 import { Link } from "react-router-dom"
 
@@ -20,7 +21,7 @@ export default function LoginPage() {
                         Login
                     </button>
                     <button type="button" className="login-btn">
-                        <Link to="invoice">Intervention Specialist</Link>
+                        <a href="/info/3">Intervention Specialist</a>
                     </button>
 
                 </div>

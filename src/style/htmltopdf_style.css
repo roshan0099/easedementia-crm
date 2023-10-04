@@ -1,6 +1,11 @@
 body{
     height: 100%;
+    width: 100%;
     /* background-color: rgb(119, 19, 119); */
+  }
+
+  .app{
+    width: 100%;
   }
   
   .violet-color{
@@ -11,6 +16,10 @@ body{
     background-color: white;
   }
   
+  header{
+    width: 100%;
+  }
+
   .info{
     display: flex;
     flex-direction: column;
@@ -26,6 +35,7 @@ body{
   table{
     border-collapse: separate;
     border-spacing: 0;
+    overflow-y: scroll;
   }
   .table-cell{
     /* border: 1px solid black; */
@@ -109,3 +119,26 @@ body{
     padding: 15px;
     border-radius: 14px;
   }
+
+  
+@media only screen and (max-width: 530px) {
+
+.content{
+    display: none;
+}
+
+.btn{
+    display: none;
+}
+header{
+    display:none;
+}
+.warning{
+    display: block;
+}
+
+.display-none{
+  display: none;
+}
+
+}

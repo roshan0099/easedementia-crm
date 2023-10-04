@@ -14,7 +14,7 @@ function App() {
       <Route path="/" element={<LoginPage/>}></Route>
       {/* <Route path="/info/:posId" element={<LoginDash/>}></Route> */}
       <Route path="/info/:id" element={<DashBoard/>}></Route>
-      <Route path="/invoice" element={<InvoicePdf/>}></Route>
+      <Route path="/dailylog" element={<InvoicePdf/>}></Route>
     </Routes>
     </>
   )

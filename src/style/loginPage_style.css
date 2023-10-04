@@ -76,16 +76,16 @@ a:link {
 
         display: flex;
         /* flex-direction: column; */
-        justify-content: space-around;
+        /* justify-content: space-around; */
         
         
     }
     
     .login-btn{
-        margin : 20px;
-        background-color: green;
+        margin : 10px;
+        /* background-color: green; */
         background-color: #ffffff;
-        padding: 5px 15px;
+        /* padding: 5px 15px; */
         color: black;
         transition: 1s;
     
