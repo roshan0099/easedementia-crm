@@ -67,7 +67,7 @@ export default function InvoicePdf() {
 
                         {/* <!-- Logout option on the far right --> */}
                         <ul className="navbar-nav ml-auto pointer">
-                            <li className="nav-item">
+                            <li className="nav-item cursor-pointer">
                                 <a className="nav-link" onClick={signOut}>Logout</a>
                             </li>
                         </ul>

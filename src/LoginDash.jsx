@@ -16,15 +16,14 @@ export default function DashBoard() {
     // console.log("this.context : ====?", id)
 
     async function signIn() {
-
-
+        
+        const emailId = formdeets["email"] + "@dementia.com"
 
         const { data, error } = await supabase.auth.signInWithPassword({
-            email: formdeets["email"],
-            password: formdeets["pwd"],
-
-            // email : "xyz@abc.com",
-            // password : "000000",
+          
+            email : emailId,
+            password : formdeets["pwd"]
+        
         })
 
         //   console.log("this is : ",data, error)
@@ -130,8 +129,8 @@ export default function DashBoard() {
                                 <h2 class="text-center mb-4">Login</h2>
                                 {/* <form > */}
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email:</label>
-                                        <input type="email" class="form-control no-outline" id="email" placeholder="Enter your email" onChange={deetsUpdating} name='email' required />
+                                        <label for="email" class="form-label">Username</label>
+                                        <input type="text" class="form-control no-outline" id="email" placeholder="Enter your username" onChange={deetsUpdating} name='email' required />
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password:</label>
