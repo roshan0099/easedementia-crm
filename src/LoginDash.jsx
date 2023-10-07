@@ -34,27 +34,29 @@ export default function DashBoard() {
         async function fetchSession() {
 
             const { data, error } = await supabase.auth.getSession()
-            // console.log("this is data ",data)
+            console.log("this is data ",data)
             setProfile(data.session?.user)
         }
 
         fetchSession()
 
         const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-
-            if (event == "SIGNED_IN"){
+            console.log("logged seee : ",session)
+            if (session !== null){
                 if(id === "3"){
                     // console.log("this is 3")
                     navigate("/dailylog")
                     
                 }
-                // console.log("yoooooo youre in")
+            //     console.log("yoooooo youre in")
 
             }
             else{
-                // console.log("get out")
+                console.log("get out")
 
             }
+
+                //   console.log("get out",event)
         })
 
 
@@ -115,11 +117,11 @@ export default function DashBoard() {
 
     return (
         <>
-            {/* {console.log("checking ...  ",profile)}
+            {console.log("checking ...  ",profile)}
 
             <button type='button' onClick={signIn}>click to login</button>
             <button type='button'onClick={signOut}>SignOut</button>
-            <div>this is dashboar</div> */}
+            <div>this is dashboar</div>
 
             <div class="container d-flex justify-content-md-center align-items-center vh-100">
                 <div class="container mt-5">
