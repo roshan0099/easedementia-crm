@@ -117,11 +117,11 @@ export default function DashBoard() {
 
     return (
         <>
-            {console.log("checking ...  ",profile)}
+            {/* {console.log("checking ...  ",profile)} */}
 
-            <button type='button' onClick={signIn}>click to login</button>
+            {/* <button type='button' onClick={signIn}>click to login</button>
             <button type='button'onClick={signOut}>SignOut</button>
-            <div>this is dashboar</div>
+            <div>this is dashboar</div> */}
 
             <div class="container d-flex justify-content-md-center align-items-center vh-100">
                 <div class="container mt-5">
