@@ -35,13 +35,38 @@ export default function InvoicePdf() {
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
-                setSelectedImage((prev) => {
+                const sampleArray = [...selectedImage]
+                if(e.target.className === "pic3"){
+                 
 
+                    sampleArray[2] = reader.result
 
-                    return ([...prev, reader.result])
+                    setSelectedImage(sampleArray)
+                   
+                } else if(e.target.className === "pic2"){
+                 
+                    sampleArray[1] = reader.result
 
+                    setSelectedImage(sampleArray)
+                   
                 }
-                );
+                
+                else{
+
+
+                    sampleArray[0] = reader.result
+
+                    setSelectedImage(sampleArray)
+                   
+                    
+                    // setSelectedImage((prev) => {
+    
+    
+                    //     return ([...prev, reader.result])
+    
+                    // }
+                    // );
+                }
 
             };
             reader.readAsDataURL(file);
@@ -159,15 +184,14 @@ export default function InvoicePdf() {
                                             <td>Remarks</td>
                                             <td>
 
-                                                <input type="file" onChange={handleImageChange} />
+                                                <input type="file" className="pic1" onChange={handleImageChange} />
                                                 {selectedImage && (
                                                     <div>
-                                                        {console.log("this is  : ", selectedImage.length > 1)}
                                                         <img src={selectedImage[0]} alt="" width="300" />
                                                     </div>
                                                 )}
                                             </td>
-                                            <td>  <input type="file" onChange={handleImageChange} />
+                                            <td>  <input type="file" className="pic2" onChange={handleImageChange} />
                                                 {selectedImage && (
                                                     <div>
                                                         {
@@ -179,10 +203,12 @@ export default function InvoicePdf() {
 
                                             </td>
                                             <td>
-                                                <input type="file" onChange={handleImageChange} />
+                                                <input type="file" className="pic3" onChange={handleImageChange} />
                                                 {selectedImage && (
                                                     <div>
+                                                      
                                                         {
+                                                        
                                                             selectedImage.length > 2 ? <img src={selectedImage[2]} alt="Uploaded" width="300" /> : <div> </div>
                                                         }
 
