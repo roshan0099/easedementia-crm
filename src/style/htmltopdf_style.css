@@ -124,15 +124,34 @@ body{
     cursor: pointer;
   }
   
+  .pdf-btn{
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    border : .5px black solid;
+    transition: 2s;
+  }
+
+  .pdf-btn:hover{
+    background-color: rgb(110, 68, 150);
+    border : .5px rgb(86, 45, 86) solid;
+    color: white;
+  }
+
+  .recent-opt{
+    margin-right: 20px;
+    padding : 10px 20px;
+    border : none;
+  }
 @media only screen and (max-width: 530px) {
 
 .content{
     display: none;
 }
 
-.btn{
+/* .btn{
     display: none;
-}
+} */
 header{
     display:none;
 }
@@ -145,3 +164,7 @@ header{
 }
 
 }
+/* 
+input[type="file"]{
+  display: none;
+} */
