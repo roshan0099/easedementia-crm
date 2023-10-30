@@ -10,7 +10,7 @@ export default function InvoicePdf() {
     const navigate = useNavigate()
     const pdfRef = useRef(null);
     const [clientDeets, setClientDeets] = useState([])
-    const [details, setDetails] = useState()
+    const [details, setDetails] = useState([])
     const [infoClient, setInfoClient] = useState([])
     const [stateOption, setStateOption] = useState("")
 
@@ -45,12 +45,14 @@ export default function InvoicePdf() {
         } else {
 
 
+
+
             const { error } = await supabase
                 .from('info_text')
                 .update(infoClient)
                 .eq('id', stateOption)
 
-                console.log("error : ",error)
+            console.log("error : ", error)
         }
 
     }
@@ -160,8 +162,7 @@ export default function InvoicePdf() {
 
     //edit the value in the field
     function editValue(elm) {
-
-
+        console.log("thsi is val : ", elm.target.innerText)
         // tempArray["name_client"] += elm.target.value
 
         // setInfoClient(tempArray)
@@ -177,6 +178,30 @@ export default function InvoicePdf() {
         })
     }
 
+    let sample = "hai"
+
+    function editValueInnerText(elm) {
+        console.log("thsi is val : ", elm.target.innerHTML)
+        var content = elm.target.innerHTML
+
+        console.log("th======> ", content, " -- -- -- ", details)
+        // tempArray["name_client"] += elm.target.value
+
+        // setInfoClient(tempArray)
+
+        setInfoClient((prev) => {
+            // setDetails(elm.target.innerText)
+
+            return (
+                {
+                    ...prev, [elm.target.id]: elm.target.innerHTML
+                }
+            )
+        })
+
+        console.log("ooooooooooooooooooooooooo ", infoClient["PE_1"])
+    }
+
 
 
     function check_data(dataElm) {
@@ -185,15 +210,19 @@ export default function InvoicePdf() {
         for (i = 0; i < clientDeets.length; i++) {
             if (clientDeets[i].id == dataElm) {
                 setInfoClient(clientDeets[i])
+                // console.log("this is info  : ")
+                setDetails(clientDeets[i])
             }
         }
 
     }
+
+
     function fetchdeets(e) {
         // console.log("this is fetch deets : ", e.target.value)
         // setDetails(e.target.value)
         setStateOption(e.target.value)
-    
+
         if (e.target.value === "recent") {
             window.location.reload()
             // console.log("info : ",infoClient)
@@ -299,27 +328,67 @@ export default function InvoicePdf() {
                                         <tbody>
                                             <tr>
                                                 <td>Physical Excercises</td>
-                                                <td><textarea name="" id="PE_1" rows="5" value={infoClient["PE_1"]== null ? " " : infoClient["PE_1"]} onChange={editValue}></textarea> </td>
-                                                <td><textarea name="" id="PE_2" rows="5" value={infoClient["PE_2"]== null ? " " : infoClient["PE_2"]} onChange={editValue}></textarea></td>
-                                                <td><textarea name="" id="PE_3" rows="5" value={infoClient["PE_3"]== null ? " " : infoClient["PE_3"]} onChange={editValue}></textarea></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cognitive Simulation</td>
-                                                <td><textarea name="" id="CS_1" rows="6" value={infoClient["CS_1"]== null ? " " : infoClient["CS_1"]} onChange={editValue}></textarea></td>
-                                                <td><textarea name="" id="CS_2" rows="6" value={infoClient["CS_2"]== null ? " " : infoClient["CS_2"]} onChange={editValue}></textarea></td>
-                                                <td><textarea name="" id="CS_3" rows="6" value={infoClient["CS_3"]== null ? " " : infoClient["CS_3"]} onChange={editValue}></textarea></td>
+                                                {/* <td><textarea name="" id="PE_1" rows="5" value={infoClient["PE_1"]== null ? " " : infoClient["PE_1"]} onChange={editValue}></textarea> </td> */}
+                                                <td>
+                                                    <div class="textarea" id="PE_1" contenteditable="true" value={infoClient["PE_1"] == null ? " " : infoClient["PE_1"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["PE_1"] }}  ></div>
+                                                </td>
+
+                                                {/* <td><textarea name="" id="PE_2" rows="5" value={infoClient["PE_2"]== null ? " " : infoClient["PE_2"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="PE_2" contenteditable="true" value={infoClient["PE_2"] == null ? " " : infoClient["PE_2"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["PE_2"] }}  ></div>
+                                                </td>
+                                                {/* <td><textarea name="" id="PE_3" rows="5" value={infoClient["PE_3"]== null ? " " : infoClient["PE_3"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="PE_3" contenteditable="true" value={infoClient["PE_3"] == null ? " " : infoClient["PE_3"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["PE_3"] }}  ></div>
+                                                </td>
                                             </tr>
                                             <tr className='secondPage'>
-                                                <td>Creative Expression / Pursuing Hobbies</td>
-                                                <td><textarea name="" id="CE_1" rows="6" value={infoClient["CE_1"]== null ? " " : infoClient["CE_1"]} onChange={editValue}></textarea></td>
-                                                <td><textarea name="" id="CE_2" rows="6" value={infoClient["CE_2"]== null ? " " : infoClient["CE_2"]} onChange={editValue}></textarea></td>
-                                                <td><textarea name="" id="CE_3" rows="6" value={infoClient["CE_3"]== null ? " " : infoClient["CE_3"]} onChange={editValue}></textarea></td>
+                                                <td>Cognitive Simulation</td>
+                                                {/* <td><textarea name="" id="CS_1" rows="6" value={infoClient["CS_1"]== null ? " " : infoClient["CS_1"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="CS_1" contenteditable="true" value={infoClient["CS_1"] == null ? " " : infoClient["CS_1"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["CS_1"] }}  ></div>
+                                                </td>
+                                                {/* <td><textarea name="" id="CS_2" rows="6" value={infoClient["CS_2"]== null ? " " : infoClient["CS_2"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="CS_2" contenteditable="true" value={infoClient["CS_2"] == null ? " " : infoClient["CS_2"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["CS_2"] }}  ></div>
+                                                </td>
+
+                                                {/* <td><textarea name="" id="CS_3" rows="6" value={infoClient["CS_3"]== null ? " " : infoClient["CS_3"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="CS_3" contenteditable="true" value={infoClient["CS_3"] == null ? " " : infoClient["CS_3"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["CS_3"] }}  ></div>
+                                                </td>
                                             </tr>
-                                            <tr className='secondPage pagebreak'>
+                                            <tr  className='secondPage pagebreak' >
+                                                <td>Creative Expression / Pursuing Hobbies</td>
+                                                {/* <td><textarea name="" id="CE_1" rows="6" value={infoClient["CE_1"]== null ? " " : infoClient["CE_1"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="CE_1" contenteditable="true" value={infoClient["CE_1"] == null ? " " : infoClient["CE_1"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["CE_1"] }}  ></div>
+                                                </td>
+                                                {/* <td><textarea name="" id="CE_2" rows="6" value={infoClient["CE_2"]== null ? " " : infoClient["CE_2"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="CE_2" contenteditable="true" value={infoClient["CE_2"] == null ? " " : infoClient["CE_2"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["CE_2"] }}  ></div>
+                                                </td>
+                                                {/* <td><textarea name="" id="CE_3" rows="6" value={infoClient["CE_3"]== null ? " " : infoClient["CE_3"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="CE_3" contenteditable="true" value={infoClient["CE_3"] == null ? " " : infoClient["CE_3"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["CE_3"] }}  ></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td>Promoting Independence </td>
-                                                <td><textarea name="" id="PI_1" rows="5" value={infoClient["PI_1"]== null ? " " : infoClient["PI_1"]} onChange={editValue}></textarea></td>
-                                                <td><textarea name="" id="PI_2" rows="5" value={infoClient["PI_2"]== null ? " " : infoClient["PI_2"]} onChange={editValue}></textarea></td>
-                                                <td><textarea name="" id="PI_3" rows="5" value={infoClient["PI_3"]== null ? " " : infoClient["PI_3"]} onChange={editValue}></textarea></td>
+                                                {/* <td><textarea name="" id="PI_1" rows="5" value={infoClient["PI_1"]== null ? " " : infoClient["PI_1"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="PI_1" contenteditable="true" value={infoClient["PI_1"] == null ? " " : infoClient["PI_1"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["PI_1"] }}  ></div>
+                                                </td>
+
+                                                {/* <td><textarea name="" id="PI_2" rows="5" value={infoClient["PI_2"]== null ? " " : infoClient["PI_2"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="PI_2" contenteditable="true" value={infoClient["PI_2"] == null ? " " : infoClient["PI_2"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["PI_2"] }}  ></div>
+                                                </td>
+                                                {/* <td><textarea name="" id="PI_3" rows="5" value={infoClient["PI_3"]== null ? " " : infoClient["PI_3"]} onChange={editValue}></textarea></td> */}
+                                                <td>
+                                                    <div class="textarea" id="PI_3" contenteditable="true" value={infoClient["PI_3"] == null ? " " : infoClient["PI_3"]} onInput={editValueInnerText} dangerouslySetInnerHTML={{ __html: details["PI_3"] }}  ></div>
+                                                </td>
+
                                             </tr>
                                             <tr>
                                                 <td>Remarks</td>
